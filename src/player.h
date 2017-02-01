@@ -138,10 +138,10 @@ class player : public Character, public JsonSerializer, public JsonDeserializer
 {
     public:
         player();
-        player(const player &);
+        player(const player &) = delete;
         player(player &&);
         ~player() override;
-        player &operator=(const player &);
+        player &operator=(const player &) = delete;
         player &operator=(player &&);
 
         // newcharacter.cpp
@@ -1616,7 +1616,7 @@ class player : public Character, public JsonSerializer, public JsonDeserializer
         mutable decltype( _skills ) valid_autolearn_skills;
 
         /** smart pointer to targeting data stored for aiming the player's weapon across turns. */
-        std::shared_ptr<targeting_data> tdata;
+        std::unique_ptr<targeting_data> tdata;
 };
 
 #endif

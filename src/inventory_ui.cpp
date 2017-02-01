@@ -1627,7 +1627,7 @@ const player &inventory_drop_selector::get_player_for_stats() const
 {
     std::map<item *, int> dummy_dropping;
 
-    dummy.reset( new player( u ) );
+    dummy.reset( new player( std::move( u ) ) );
 
     for( const auto &elem : dropping ) {
         dummy_dropping[&dummy->i_at( u.get_item_position( elem.first ) )] = elem.second;
